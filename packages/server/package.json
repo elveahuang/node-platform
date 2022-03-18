@@ -1,0 +1,51 @@
+{
+    "name": "@platform/server",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "prebuild": "rimraf dist",
+        "build": "npm run prebuild & nest build",
+        "start": "npm run prebuild & nest start --watch --debug",
+        "start:dev": "npm run prebuild & nest start --watch",
+        "start:debug": "nest start --debug --watch",
+        "start:prod": "node dist/main",
+        "w:dev": "nest build --watch --webpack --webpackPath webpack.config.js",
+        "w:start": "node dist/main"
+    },
+    "dependencies": {
+        "@nestjs/common": "^8.4.1",
+        "@nestjs/core": "^8.4.1",
+        "@nestjs/mongoose": "^9.0.3",
+        "@nestjs/platform-express": "^8.4.1",
+        "@nestjs/platform-fastify": "^8.4.1",
+        "@nestjs/swagger": "^5.2.0",
+        "@nestjs/typeorm": "^8.0.3",
+        "fastify-swagger": "^5.0.0",
+        "mongoose": "^6.2.7",
+        "mysql2": "^2.3.3",
+        "reflect-metadata": "^0.1.13",
+        "rimraf": "^3.0.2",
+        "rxjs": "^7.5.5",
+        "swagger-ui-express": "^4.3.0",
+        "typeorm": "^0.3.0"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "^8.2.3",
+        "@nestjs/schematics": "^8.0.8",
+        "@types/express": "^4.17.13",
+        "@types/node": "^17.0.21",
+        "express": "^4.17.3",
+        "path": "^0.12.7",
+        "source-map-support": "^0.5.21",
+        "ts-loader": "^9.2.8",
+        "ts-node": "^10.7.0",
+        "tsconfig-paths": "^3.14.0",
+        "tsconfig-paths-webpack-plugin": "^3.5.2",
+        "tslib": "^2.3.1",
+        "typescript": "^4.6.2",
+        "webpack": "^5.70.0",
+        "webpack-cli": "^4.9.2",
+        "webpack-node-externals": "^3.0.0",
+        "webpack-pnp-externals": "^1.1.0"
+    }
+}
