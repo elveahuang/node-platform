@@ -16,6 +16,8 @@ importers:
       '@types/validator': ^13.7.1
       '@typescript-eslint/eslint-plugin': ^5.15.0
       '@typescript-eslint/parser': ^5.15.0
+      '@vue/eslint-config-prettier': ^7.0.0
+      '@vue/eslint-config-typescript': ^10.0.0
       core-js: ^3.21.1
       crypto-js: ^4.1.1
       dayjs: ^1.11.0
@@ -56,6 +58,8 @@ importers:
       '@types/validator': registry.npmmirror.com/@types/validator/13.7.1
       '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.15.0_f2c49ce7d0e93ebcfdb4b7d25b131b28
       '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.15.0_eslint@8.11.0+typescript@4.6.2
+      '@vue/eslint-config-prettier': registry.npmmirror.com/@vue/eslint-config-prettier/7.0.0_eslint@8.11.0+prettier@2.6.0
+      '@vue/eslint-config-typescript': registry.npmmirror.com/@vue/eslint-config-typescript/10.0.0_5e58415d4c9ab0c3da8935a9b8bb8c26
       eslint: registry.npmmirror.com/eslint/8.11.0
       eslint-config-prettier: registry.npmmirror.com/eslint-config-prettier/8.5.0_eslint@8.11.0
       eslint-config-taro: registry.npmmirror.com/eslint-config-taro/3.4.3_eslint@8.11.0+typescript@4.6.2
@@ -82,7 +86,9 @@ importers:
     specifiers:
       '@nestjs/cli': ^8.2.3
       '@nestjs/common': ^8.4.1
+      '@nestjs/config': ^2.0.0
       '@nestjs/core': ^8.4.1
+      '@nestjs/jwt': ^8.0.0
       '@nestjs/microservices': ^8.4.1
       '@nestjs/mongoose': ^9.0.3
       '@nestjs/platform-express': ^8.4.1
@@ -93,6 +99,7 @@ importers:
       '@types/express': ^4.17.13
       '@types/node': ^17.0.21
       class-transformer: ^0.5.1
+      class-validator: ^0.13.2
       express: ^4.17.3
       fastify-swagger: ^5.0.0
       mongoose: ^6.2.7
@@ -115,15 +122,18 @@ importers:
       webpack-node-externals: ^3.0.0
       webpack-pnp-externals: ^1.1.0
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
+      '@nestjs/config': registry.npmmirror.com/@nestjs/config/2.0.0_b8034d7883829e8dea958456cea5a5cb
       '@nestjs/core': registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2
+      '@nestjs/jwt': registry.npmmirror.com/@nestjs/jwt/8.0.0_@nestjs+common@8.4.1
       '@nestjs/microservices': registry.npmmirror.com/@nestjs/microservices/8.4.1_b68caa36af62aa4e088f563096b746ee
       '@nestjs/mongoose': registry.npmmirror.com/@nestjs/mongoose/9.0.3_9143f0481171cc20a4f0cadb108b4e27
       '@nestjs/platform-express': registry.npmmirror.com/@nestjs/platform-express/8.4.1_214a294e539403889bf33d78c1f08a26
       '@nestjs/platform-fastify': registry.npmmirror.com/@nestjs/platform-fastify/8.4.1_214a294e539403889bf33d78c1f08a26
-      '@nestjs/swagger': registry.npmmirror.com/@nestjs/swagger/5.2.0_e5ba9b4dc9b8ed180f263f6035b8812d
+      '@nestjs/swagger': registry.npmmirror.com/@nestjs/swagger/5.2.0_9072c3708c679327c466de0cbfb83232
       '@nestjs/typeorm': registry.npmmirror.com/@nestjs/typeorm/8.0.3_32816d1a3561b3174dcb1f2153905330
       class-transformer: registry.npmmirror.com/class-transformer/0.5.1
+      class-validator: registry.npmmirror.com/class-validator/0.13.2
       fastify-swagger: registry.npmmirror.com/fastify-swagger/5.0.0
       mongoose: registry.npmmirror.com/mongoose/6.2.7
       mysql2: registry.npmmirror.com/mysql2/2.3.3
@@ -1950,7 +1960,7 @@ packages:
       - webpack-cli
     dev: true
 
-  registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641:
+  registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827:
     resolution: {integrity: sha512-g6beLHvJ2cCIdlW8Uui8rQh3+oxLOBLzDIk3yWH4ocp2HEgOJwF0iUv/pk33tFuwbXESIGMK8K165cpZUjNoxA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nestjs/common/-/common-8.4.1.tgz}
     id: registry.npmmirror.com/@nestjs/common/8.4.1
     name: '@nestjs/common'
@@ -1971,6 +1981,7 @@ packages:
     dependencies:
       axios: registry.npmmirror.com/axios/0.26.1
       class-transformer: registry.npmmirror.com/class-transformer/0.5.1
+      class-validator: registry.npmmirror.com/class-validator/0.13.2
       iterare: registry.npmmirror.com/iterare/1.2.1
       reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
       rxjs: registry.npmmirror.com/rxjs/7.5.5
@@ -1978,6 +1989,25 @@ packages:
       uuid: registry.npmmirror.com/uuid/8.3.2
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  registry.npmmirror.com/@nestjs/config/2.0.0_b8034d7883829e8dea958456cea5a5cb:
+    resolution: {integrity: sha512-Hi1k/1S5ogsS5c0OtNm72thiLSngijOaLDFaGI5ZPxNGpF23lctPg6ox3pYIOhXVRX/u+eiUIp71gswH2k8YNw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nestjs/config/-/config-2.0.0.tgz}
+    id: registry.npmmirror.com/@nestjs/config/2.0.0
+    name: '@nestjs/config'
+    version: 2.0.0
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0
+      reflect-metadata: ^0.1.13
+      rxjs: ^6.0.0 || ^7.2.0
+    dependencies:
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
+      dotenv: registry.npmmirror.com/dotenv/16.0.0
+      dotenv-expand: registry.npmmirror.com/dotenv-expand/8.0.2
+      lodash: registry.npmmirror.com/lodash/4.17.21
+      reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
+      rxjs: registry.npmmirror.com/rxjs/7.5.5
+      uuid: registry.npmmirror.com/uuid/8.3.2
     dev: false
 
   registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2:
@@ -2001,7 +2031,7 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       '@nestjs/microservices': registry.npmmirror.com/@nestjs/microservices/8.4.1_b68caa36af62aa4e088f563096b746ee
       '@nestjs/platform-express': registry.npmmirror.com/@nestjs/platform-express/8.4.1_214a294e539403889bf33d78c1f08a26
       '@nuxtjs/opencollective': registry.npmmirror.com/@nuxtjs/opencollective/0.3.2
@@ -2017,7 +2047,20 @@ packages:
       - encoding
     dev: false
 
-  registry.npmmirror.com/@nestjs/mapped-types/1.0.1_151d10695c43c8ad8c5e61395b3ffee6:
+  registry.npmmirror.com/@nestjs/jwt/8.0.0_@nestjs+common@8.4.1:
+    resolution: {integrity: sha512-fz2LQgYY2zmuD8S+8UE215anwKyXlnB/1FwJQLVR47clNfMeFMK8WCxmn6xdPhF5JKuV1crO6FVabb1qWzDxqQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nestjs/jwt/-/jwt-8.0.0.tgz}
+    id: registry.npmmirror.com/@nestjs/jwt/8.0.0
+    name: '@nestjs/jwt'
+    version: 8.0.0
+    peerDependencies:
+      '@nestjs/common': ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
+      '@types/jsonwebtoken': registry.npmmirror.com/@types/jsonwebtoken/8.5.4
+      jsonwebtoken: registry.npmmirror.com/jsonwebtoken/8.5.1
+    dev: false
+
+  registry.npmmirror.com/@nestjs/mapped-types/1.0.1_7d4466f82a71f886e9e64844ca25cf70:
     resolution: {integrity: sha512-NFvofzSinp00j5rzUd4tf+xi9od6383iY0JP7o0Bnu1fuItAUkWBgc4EKuIQ3D+c2QI3i9pG1kDWAeY27EMGtg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nestjs/mapped-types/-/mapped-types-1.0.1.tgz}
     id: registry.npmmirror.com/@nestjs/mapped-types/1.0.1
     name: '@nestjs/mapped-types'
@@ -2033,8 +2076,9 @@ packages:
       class-validator:
         optional: true
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       class-transformer: registry.npmmirror.com/class-transformer/0.5.1
+      class-validator: registry.npmmirror.com/class-validator/0.13.2
       reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
     dev: false
 
@@ -2077,7 +2121,7 @@ packages:
       redis:
         optional: true
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       '@nestjs/core': registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2
       iterare: registry.npmmirror.com/iterare/1.2.1
       json-socket: registry.npmmirror.com/json-socket/0.3.0
@@ -2098,7 +2142,7 @@ packages:
       reflect-metadata: ^0.1.12
       rxjs: ^6.0.0 || ^7.0.0
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       '@nestjs/core': registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2
       mongoose: registry.npmmirror.com/mongoose/6.2.7
       reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
@@ -2114,7 +2158,7 @@ packages:
       '@nestjs/common': ^8.0.0
       '@nestjs/core': ^8.0.0
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       '@nestjs/core': registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2
       body-parser: registry.npmmirror.com/body-parser/1.19.2
       cors: registry.npmmirror.com/cors/2.8.5
@@ -2132,7 +2176,7 @@ packages:
       '@nestjs/common': ^8.0.0
       '@nestjs/core': ^8.0.0
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       '@nestjs/core': registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2
       fastify: registry.npmmirror.com/fastify/3.27.4
       fastify-cors: registry.npmmirror.com/fastify-cors/6.0.3
@@ -2181,7 +2225,7 @@ packages:
       - chokidar
     dev: true
 
-  registry.npmmirror.com/@nestjs/swagger/5.2.0_e5ba9b4dc9b8ed180f263f6035b8812d:
+  registry.npmmirror.com/@nestjs/swagger/5.2.0_9072c3708c679327c466de0cbfb83232:
     resolution: {integrity: sha512-wcW2KCe7irwBw0WKsb03uFk4gnjqNcAcJxXGZxi6ljFiDgyLrQtx5MpE95o703tnn4V/hZR8MqMNFOXuup7Pqw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nestjs/swagger/-/swagger-5.2.0.tgz}
     id: registry.npmmirror.com/@nestjs/swagger/5.2.0
     name: '@nestjs/swagger'
@@ -2198,9 +2242,9 @@ packages:
       swagger-ui-express:
         optional: true
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       '@nestjs/core': registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2
-      '@nestjs/mapped-types': registry.npmmirror.com/@nestjs/mapped-types/1.0.1_151d10695c43c8ad8c5e61395b3ffee6
+      '@nestjs/mapped-types': registry.npmmirror.com/@nestjs/mapped-types/1.0.1_7d4466f82a71f886e9e64844ca25cf70
       fastify-swagger: registry.npmmirror.com/fastify-swagger/5.0.0
       lodash: registry.npmmirror.com/lodash/4.17.21
       path-to-regexp: registry.npmmirror.com/path-to-regexp/3.2.0
@@ -2223,7 +2267,7 @@ packages:
       rxjs: ^7.2.0
       typeorm: ^0.2.34
     dependencies:
-      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_3044bd89f8da73cc5c440b2cebf82641
+      '@nestjs/common': registry.npmmirror.com/@nestjs/common/8.4.1_5199533202e21c7185c9d97f881e2827
       '@nestjs/core': registry.npmmirror.com/@nestjs/core/8.4.1_60c843523cf21307daced6d0ef5c3fa2
       reflect-metadata: registry.npmmirror.com/reflect-metadata/0.1.13
       rxjs: registry.npmmirror.com/rxjs/7.5.5
@@ -2397,6 +2441,14 @@ packages:
     name: '@types/json5'
     version: 0.0.29
     dev: true
+
+  registry.npmmirror.com/@types/jsonwebtoken/8.5.4:
+    resolution: {integrity: sha512-4L8msWK31oXwdtC81RmRBAULd0ShnAHjBuKT9MRQpjP0piNrZdXyTRcKY9/UIfhGeKIT4PvF5amOOUbbT/9Wpg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/jsonwebtoken/-/jsonwebtoken-8.5.4.tgz}
+    name: '@types/jsonwebtoken'
+    version: 8.5.4
+    dependencies:
+      '@types/node': registry.npmmirror.com/@types/node/17.0.21
+    dev: false
 
   registry.npmmirror.com/@types/jsonwebtoken/8.5.8:
     resolution: {integrity: sha512-zm6xBQpFDIDM6o9r6HSgDeIcLy82TKWctCXEPbJJcXb5AKmi5BNNdLXneixK4lplX3PqIVcwLBCGE/kAGnlD4A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/jsonwebtoken/-/jsonwebtoken-8.5.8.tgz}
@@ -2807,7 +2859,7 @@ packages:
       '@volar/vue-code-gen': registry.npmmirror.com/@volar/vue-code-gen/0.33.2
       '@vue/reactivity': registry.npmmirror.com/@vue/reactivity/3.2.31
       upath: registry.npmmirror.com/upath/2.0.1
-      vscode-css-languageservice: registry.npmmirror.com/vscode-css-languageservice/5.1.13
+      vscode-css-languageservice: registry.npmmirror.com/vscode-css-languageservice/5.2.0
       vscode-html-languageservice: registry.npmmirror.com/vscode-html-languageservice/4.2.2
       vscode-json-languageservice: registry.npmmirror.com/vscode-json-languageservice/4.2.0
       vscode-languageserver-protocol: registry.npmmirror.com/vscode-languageserver-protocol/3.17.0-next.16
@@ -2863,6 +2915,41 @@ packages:
     name: '@vue/devtools-api'
     version: 6.1.3
     dev: false
+
+  registry.npmmirror.com/@vue/eslint-config-prettier/7.0.0_eslint@8.11.0+prettier@2.6.0:
+    resolution: {integrity: sha512-/CTc6ML3Wta1tCe1gUeO0EYnVXfo3nJXsIhZ8WJr3sov+cGASr6yuiibJTL6lmIBm7GobopToOuB3B6AWyV0Iw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/eslint-config-prettier/-/eslint-config-prettier-7.0.0.tgz}
+    id: registry.npmmirror.com/@vue/eslint-config-prettier/7.0.0
+    name: '@vue/eslint-config-prettier'
+    version: 7.0.0
+    peerDependencies:
+      eslint: '>= 7.28.0'
+      prettier: '>= 2.0.0'
+    dependencies:
+      eslint: registry.npmmirror.com/eslint/8.11.0
+      eslint-config-prettier: registry.npmmirror.com/eslint-config-prettier/8.5.0_eslint@8.11.0
+      eslint-plugin-prettier: registry.npmmirror.com/eslint-plugin-prettier/4.0.0_68edcf5670f37721baf5d2cac6124e4d
+      prettier: registry.npmmirror.com/prettier/2.6.0
+    dev: true
+
+  registry.npmmirror.com/@vue/eslint-config-typescript/10.0.0_5e58415d4c9ab0c3da8935a9b8bb8c26:
+    resolution: {integrity: sha512-F94cL8ug3FaYXlCfU5/wiGjk1qeadmoBpRGAOBq+qre3Smdupa59dd6ZJrsfRODpsMPyTG7330juMDsUvpZ3Rw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/eslint-config-typescript/-/eslint-config-typescript-10.0.0.tgz}
+    id: registry.npmmirror.com/@vue/eslint-config-typescript/10.0.0
+    name: '@vue/eslint-config-typescript'
+    version: 10.0.0
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
+      eslint-plugin-vue: ^8.0.1
+    dependencies:
+      '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.15.0_f2c49ce7d0e93ebcfdb4b7d25b131b28
+      '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.15.0_eslint@8.11.0+typescript@4.6.2
+      eslint: registry.npmmirror.com/eslint/8.11.0
+      eslint-plugin-vue: registry.npmmirror.com/eslint-plugin-vue/8.5.0_eslint@8.11.0
+      vue-eslint-parser: registry.npmmirror.com/vue-eslint-parser/8.3.0_eslint@8.11.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
 
   registry.npmmirror.com/@vue/reactivity-transform/3.2.31:
     resolution: {integrity: sha512-uS4l4z/W7wXdI+Va5pgVxBJ345wyGFKvpPYtdSgvfJfX/x2Ymm6ophQlXXB6acqGHtXuBqNyyO3zVp9b1r0MOA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/reactivity-transform/-/reactivity-transform-3.2.31.tgz}
@@ -3796,6 +3883,15 @@ packages:
     version: 0.5.1
     dev: false
 
+  registry.npmmirror.com/class-validator/0.13.2:
+    resolution: {integrity: sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/class-validator/-/class-validator-0.13.2.tgz}
+    name: class-validator
+    version: 0.13.2
+    dependencies:
+      libphonenumber-js: registry.npmmirror.com/libphonenumber-js/1.9.50
+      validator: registry.npmmirror.com/validator/13.7.0
+    dev: false
+
   registry.npmmirror.com/clean-stack/2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/clean-stack/-/clean-stack-2.2.0.tgz}
     name: clean-stack
@@ -4267,6 +4363,13 @@ packages:
     dependencies:
       esutils: registry.npmmirror.com/esutils/2.0.3
     dev: true
+
+  registry.npmmirror.com/dotenv-expand/8.0.2:
+    resolution: {integrity: sha512-vKKAk+VOzAWOV/dPIeSYqhgC/TQY+6L6Ibkzfsr8xd1stdBsTuGu9asCOXgbYbBeS+f2Y6lqqEuw7riOA+xEUQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dotenv-expand/-/dotenv-expand-8.0.2.tgz}
+    name: dotenv-expand
+    version: 8.0.2
+    engines: {node: '>=12'}
+    dev: false
 
   registry.npmmirror.com/dotenv/16.0.0:
     resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dotenv/-/dotenv-16.0.0.tgz}
@@ -5082,10 +5185,10 @@ packages:
     version: 3.0.1
     dev: false
 
-  registry.npmmirror.com/fastify-static/4.6.0:
-    resolution: {integrity: sha512-Ojr1MYQpnkFFcCu861iG4Ohw57Aglovkr2A3lPrsjYlEL0IWjnMNqkZg4rDcaeus4iKTjny7pZAI/S835OPE9w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fastify-static/-/fastify-static-4.6.0.tgz}
+  registry.npmmirror.com/fastify-static/4.6.1:
+    resolution: {integrity: sha512-vy7N28U4AMhuOim12ZZWHulEE6OQKtzZbHgiB8Zj4llUuUQXPka0WHAQI3njm1jTCx4W6fixUHfpITxweMtAIA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/fastify-static/-/fastify-static-4.6.1.tgz}
     name: fastify-static
-    version: 4.6.0
+    version: 4.6.1
     dependencies:
       content-disposition: registry.npmmirror.com/content-disposition/0.5.4
       encoding-negotiator: registry.npmmirror.com/encoding-negotiator/2.0.1
@@ -5102,7 +5205,7 @@ packages:
     version: 5.0.0
     dependencies:
       fastify-plugin: registry.npmmirror.com/fastify-plugin/3.0.1
-      fastify-static: registry.npmmirror.com/fastify-static/4.6.0
+      fastify-static: registry.npmmirror.com/fastify-static/4.6.1
       js-yaml: registry.npmmirror.com/js-yaml/4.1.0
       json-schema-resolver: registry.npmmirror.com/json-schema-resolver/1.3.0
       openapi-types: registry.npmmirror.com/openapi-types/10.0.0
@@ -6024,6 +6127,12 @@ packages:
       prelude-ls: registry.npmmirror.com/prelude-ls/1.2.1
       type-check: registry.npmmirror.com/type-check/0.4.0
     dev: true
+
+  registry.npmmirror.com/libphonenumber-js/1.9.50:
+    resolution: {integrity: sha512-cCzQPChw2XbordcO2LKiw5Htx5leHVfFk/EXkxNHqJfFo7Fndcb1kF5wPJpc316vCJhhikedYnVysMh3Sc7Ocw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/libphonenumber-js/-/libphonenumber-js-1.9.50.tgz}
+    name: libphonenumber-js
+    version: 1.9.50
+    dev: false
 
   registry.npmmirror.com/lie/3.1.1:
     resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lie/-/lie-3.1.1.tgz}
@@ -8616,10 +8725,10 @@ packages:
       fsevents: registry.npmmirror.com/fsevents/2.3.2
     dev: true
 
-  registry.npmmirror.com/vscode-css-languageservice/5.1.13:
-    resolution: {integrity: sha512-FA0foqMzMmEoO0WJP+MjoD4dRERhKS+Ag+yBrtmWQDmw2OuZ1R/5FkvI/XdTkCpHmTD9VMczugpHRejQyTXCNQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-css-languageservice/-/vscode-css-languageservice-5.1.13.tgz}
+  registry.npmmirror.com/vscode-css-languageservice/5.2.0:
+    resolution: {integrity: sha512-FR5yDEfzbXJtYmZYrA7JWFcRSLHsJw3nv55XAmx7qdwRpFj9yy0ulKfN/NUUdiZW2jZU2fD/+Y4VJYPdafHDag==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-css-languageservice/-/vscode-css-languageservice-5.2.0.tgz}
     name: vscode-css-languageservice
-    version: 5.1.13
+    version: 5.2.0
     dependencies:
       vscode-languageserver-textdocument: registry.npmmirror.com/vscode-languageserver-textdocument/1.0.4
       vscode-languageserver-types: registry.npmmirror.com/vscode-languageserver-types/3.16.0

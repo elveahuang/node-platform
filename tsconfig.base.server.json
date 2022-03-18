@@ -19,6 +19,8 @@
         "baseUrl": "./",
         "outDir": "./dist",
         "paths": {
+            "@platform/server": ["./packages/server/src"],
+            "@platform/server/*": ["./packages/server/src/*"],
             "@platform/commons": ["./packages/commons/src"],
             "@platform/commons/*": ["./packages/commons/src/*"]
         }
