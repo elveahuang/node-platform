@@ -6,10 +6,10 @@
         "lint": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}'",
         "lint:fix": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}' --fix",
         "prettier": "prettier --write './**/*.{ts,tsx,js,jsx,json,scss,css,vue}'",
-        "start-server": "npm run start --w @platform/server",
-        "start-webapp": "npm run start --w @platform-www/webapp",
-        "build-server": "npm run build --w @platform/server",
-        "build-webapp": "npm run build --w @platform-www/webapp"
+        "start-server": "pnpm run start --w @platform/server",
+        "start-webapp": "pnpm run start --w @platform-www/webapp",
+        "build:server": "cd ./packages/server && pnpm run build",
+        "build:webapp": "cd ./packages/www/webapp && pnpm run build"
     },
     "workspaces": [
         "packages/**"
