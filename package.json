@@ -6,8 +6,9 @@
         "lint": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}'",
         "lint:fix": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}' --fix",
         "prettier": "prettier --write './**/*.{ts,tsx,js,jsx,json,scss,css,vue}'",
-        "start-server": "pnpm run start --w @platform/server",
-        "start-webapp": "pnpm run start --w @platform-www/webapp",
+        "start:server": "pnpm run start --w @platform/server",
+        "start:server:prod": "cd ./packages/server && node dist/main",
+        "start:webapp": "pnpm run start --w @platform-www/webapp",
         "build:server": "cd ./packages/server && pnpm run build",
         "build:webapp": "cd ./packages/www/webapp && pnpm run build"
     },
