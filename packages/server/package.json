@@ -8,18 +8,18 @@
         "start": "npm run prebuild & nest start --watch --debug",
         "start:dev": "npm run prebuild & nest start --watch",
         "start:debug": "nest start --debug --watch",
-        "start:prod": "node dist/main",
-        "w:dev": "nest build --watch --webpack --webpackPath webpack.config.js",
-        "w:start": "node dist/main"
+        "start:prod": "node dist/main"
     },
     "dependencies": {
         "@nestjs/common": "^8.4.1",
         "@nestjs/core": "^8.4.1",
+        "@nestjs/microservices": "^8.4.1",
         "@nestjs/mongoose": "^9.0.3",
         "@nestjs/platform-express": "^8.4.1",
         "@nestjs/platform-fastify": "^8.4.1",
         "@nestjs/swagger": "^5.2.0",
         "@nestjs/typeorm": "^8.0.3",
+        "class-transformer": "^0.5.1",
         "fastify-swagger": "^5.0.0",
         "mongoose": "^6.2.7",
         "mysql2": "^2.3.3",
