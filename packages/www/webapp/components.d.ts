@@ -3,11 +3,10 @@
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 
 declare module 'vue' {
-    export interface GlobalComponents {
-        ElButton: typeof import('element-plus/es')['ElButton'];
-        ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider'];
-        HelloWorld: typeof import('./src/components/HelloWorld.vue')['default'];
-    }
+  export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+  }
 }
 
-export {};
+export { }
