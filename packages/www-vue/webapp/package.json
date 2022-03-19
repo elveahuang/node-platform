@@ -1,5 +1,5 @@
 {
-    "name": "@platform-www/webapp",
+    "name": "@platform-vue/webapp",
     "version": "0.0.1",
     "scripts": {
         "start": "vite",
