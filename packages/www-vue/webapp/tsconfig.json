@@ -1,12 +1,13 @@
 {
-    "extends": "../../../tsconfig.base.www.json",
+    "extends": "../../../tsconfig.base.vue.json",
     "compilerOptions": {
         "paths": {
-            "@/*": ["./src/*"],
             "@platform/commons": ["../../commons/src"],
             "@platform/commons/*": ["../../commons/src/*"],
-            "@platform-www/commons": ["../commons/src"],
-            "@platform-www/commons/*": ["../commons/src/*"]
+            "@platform-www/commons": ["../../www-commons/src"],
+            "@platform-www/commons/*": ["../../www-commons/src/*"],
+            "@platform-vue/commons": ["../commons/src"],
+            "@platform-vue/commons/*": ["../commons/src/*"]
         }
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]

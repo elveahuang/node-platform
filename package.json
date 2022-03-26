@@ -9,7 +9,11 @@
         "start:server": "pnpm run start --w @platform/server",
         "start:server:prod": "cd ./packages/server && node dist/main",
         "build:server": "cd ./packages/server && pnpm run build",
-        "start:vue:webapp": "cd packages/www-vue/webapp && pnpm run start",
+        "start:vue:mobile": "cd packages/www-vue/mobile && pnpm run start",
+        "build:vue:mobile": "cd packages/www-vue/mobile && pnpm run build",
+        "start:vue:mp": "cd packages/www-vue/webapp && pnpm run start",
+        "build:vue:mp": "cd packages/www-vue/mp && pnpm run build",
+        "start:vue:webapp": "cd packages/www-vue/mp && pnpm run start",
         "build:vue:webapp": "cd packages/www-vue/webapp && pnpm run build",
         "start:react:webapp": "cd packages/www-react/webapp && pnpm run start",
         "build:react:webapp": "cd packages/www-react/webapp && pnpm run build"
@@ -18,12 +22,15 @@
         "packages/**"
     ],
     "dependencies": {
+        "axios": "^0.26.1",
         "core-js": "^3.21.1",
         "crypto-js": "^4.1.1",
+        "date-fns": "^2.28.0",
         "dayjs": "^1.11.0",
         "jsonwebtoken": "^8.5.1",
         "localforage": "^1.10.0",
         "lodash": "^4.17.21",
+        "qs": "^6.10.3",
         "uuid": "^8.3.2",
         "validator": "^13.7.0"
     },

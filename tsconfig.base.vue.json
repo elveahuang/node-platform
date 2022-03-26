@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "@platform/commons": ["./packages/commons/src"],
+            "@platform/commons/*": ["./packages/commons/src/*"],
+            "@platform-www/commons": ["./packages/www-commons/src"],
+            "@platform-www/commons/*": ["./packages/www-commons/src/*"],
+            "@platform-vue/commons": ["./packages/www-vue/commons/src"],
+            "@platform-vue/commons/*": ["./packages/www-vue/commons/src/*"]
+        }
+    }
+}

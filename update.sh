@@ -61,7 +61,21 @@ rm -rf package-lock.json
 rm -rf pnpm-lock.yaml
 rm -rf node_modules
 ncu -u
-# @platform-vue/commons
+# @platform-vue/mobile
+cd "$ROOT/packages/www-vue/mobile"
+pwd
+rm -rf package-lock.json
+rm -rf pnpm-lock.yaml
+rm -rf node_modules
+ncu -u
+# @platform-vue/mp
+cd "$ROOT/packages/www-vue/mp"
+pwd
+rm -rf package-lock.json
+rm -rf pnpm-lock.yaml
+rm -rf node_modules
+ncu -u
+# @platform-vue/webapp
 cd "$ROOT/packages/www-vue/webapp"
 pwd
 rm -rf package-lock.json
