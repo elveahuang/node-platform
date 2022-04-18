@@ -9,6 +9,7 @@ async function bootstrap() {
     // 全局前缀
     app.setGlobalPrefix('api');
 
+    // 接口文档
     const config = new DocumentBuilder()
         .setTitle('接口文档')
         .setDescription('接口文档')

@@ -21,15 +21,15 @@
         "dev:quickapp": "npm run build:quickapp -- --watch"
     },
     "dependencies": {
-        "@babel/runtime": "^7.17.8",
-        "@tarojs/runtime": "^3.4.3",
-        "@tarojs/taro": "^3.4.3",
-        "@tarojs/components": "^3.4.3"
+        "@babel/runtime": "^7.17.9",
+        "@tarojs/runtime": "^3.4.6",
+        "@tarojs/taro": "^3.4.6",
+        "@tarojs/components": "^3.4.6"
     },
     "devDependencies": {
-        "@types/webpack-env": "^1.16.3",
-        "@tarojs/mini-runner": "^3.4.3",
-        "@tarojs/webpack-runner": "^3.4.3"
+        "@types/webpack-env": "^1.16.4",
+        "@tarojs/mini-runner": "^3.4.6",
+        "@tarojs/webpack-runner": "^3.4.6"
     },
     "eslintConfig": {
         "extends": [

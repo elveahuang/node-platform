@@ -1,10 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity } from 'typeorm';
+import IdEntity from '@platform/server/commons/entity/id-entity';
 
 @Entity('sys_user')
-export default class UserEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column()
-    username: string;
+export default class UserEntity extends IdEntity {
+    /**
+     *
+     */
+    @Column({ name: 'user_name' })
+    userName: string;
 }
