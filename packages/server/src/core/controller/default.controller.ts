@@ -19,6 +19,13 @@ export default class DefaultController {
     @ApiOperation({ summary: '获取当前版本号' })
     @ApiResponse({ status: 200, description: '成功' })
     version(): string {
+        const repository = this.coreService.getRepository(UserEntity);
+        repository.find().then((users) => {
+            users.forEach((u) => {
+                console.log(u.id);
+                console.log(u.userName);
+            });
+        });
         console.log(this.sequenceService.nextId());
         this.userService.findAll().then((users: UserEntity[]) => {
             users.forEach((u) => {

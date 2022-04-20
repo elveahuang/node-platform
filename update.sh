@@ -25,58 +25,31 @@ rm -rf dist
 rm -rf build
 ncu -u
 # ======================================================================================================================
-# www-commons
-# ======================================================================================================================
-# @platform/www-commons
-cd "$ROOT/packages/www-commons"
-pwd
-rm -rf package-lock.json
-rm -rf pnpm-lock.yaml
-rm -rf node_modules
-ncu -u
-# ======================================================================================================================
-# react
-# ======================================================================================================================
-# @platform-react/commons
-cd "$ROOT/packages/www-react/commons"
-pwd
-rm -rf package-lock.json
-rm -rf pnpm-lock.yaml
-rm -rf node_modules
-ncu -u
-# @platform-react/commons
-cd "$ROOT/packages/www-react/webapp"
-pwd
-rm -rf package-lock.json
-rm -rf pnpm-lock.yaml
-rm -rf node_modules
-ncu -u
-# ======================================================================================================================
 # vue
 # ======================================================================================================================
-# @platform-vue/commons
-cd "$ROOT/packages/www-vue/commons"
+# @platform-www/commons
+cd "$ROOT/packages/www/commons"
 pwd
 rm -rf package-lock.json
 rm -rf pnpm-lock.yaml
 rm -rf node_modules
 ncu -u
-# @platform-vue/mobile
-cd "$ROOT/packages/www-vue/mobile"
+# @platform-www/mobile
+cd "$ROOT/packages/www/mobile"
 pwd
 rm -rf package-lock.json
 rm -rf pnpm-lock.yaml
 rm -rf node_modules
 ncu -u
-# @platform-vue/mp
-cd "$ROOT/packages/www-vue/mp"
+# @platform-www/mp
+cd "$ROOT/packages/www/mp"
 pwd
 rm -rf package-lock.json
 rm -rf pnpm-lock.yaml
 rm -rf node_modules
 ncu -u
-# @platform-vue/webapp
-cd "$ROOT/packages/www-vue/webapp"
+# @platform-www/webapp
+cd "$ROOT/packages/www/webapp"
 pwd
 rm -rf package-lock.json
 rm -rf pnpm-lock.yaml
