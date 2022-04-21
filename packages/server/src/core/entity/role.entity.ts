@@ -1,25 +1,8 @@
 import { Column, Entity } from 'typeorm';
 import IdEntity from '@platform/server/commons/entity/id-entity';
-import RoleEntity from '@platform/server/core/entity/role.entity';
-import AuthorityEntity from '@platform/server/core/entity/authority.entity';
 
-@Entity('sys_user')
-export default class UserEntity extends IdEntity {
-    /**
-     * 用户名
-     */
-    @Column({ name: 'user_name' })
-    userName: string;
-    /**
-     * 密码
-     */
-    @Column()
-    password: string;
-    /**
-     * 是否启用
-     */
-    @Column({ name: 'active_' })
-    active_: string;
+@Entity('sys_role')
+export default class RoleEntity extends IdEntity {
     /**
      * 创建人
      */
@@ -50,12 +33,4 @@ export default class UserEntity extends IdEntity {
      */
     @Column({ name: 'deleted_at' })
     deletedAt: string;
-    /**
-     * 用户所拥有的角色
-     */
-    roles: RoleEntity[];
-    /**
-     * 用户所拥有的权限
-     */
-    authorities: AuthorityEntity[];
 }

@@ -1,33 +1,54 @@
 import { Global, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-//
-import CoreService from '@platform/server/core/service/core.service';
-import UserService from '@platform/server/core/service/user.service';
-import RoleService from '@platform/server/core/service/role.service';
-import AuthorityService from '@platform/server/core/service/authority.service';
-//
-import DefaultController from '@platform/server/core/controller/default.controller';
-import UserController from '@platform/server/core/controller/user.controller';
-import UserMgrController from '@platform/server/core/controller/user.mgr.controller';
-import RoleController from '@platform/server/core/controller/role.controller';
-import RoleMgrController from '@platform/server/core/controller/role.mgr.controller';
-import AuthorityMgrController from '@platform/server/core/controller/authority.mgr.controller';
+import { PassportModule } from '@nestjs/passport';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import UserEntity from '@platform/server/core/entity/user.entity';
+import { JwtModule } from '@nestjs/jwt';
+//
+import { TypeOrmExtModule } from '@platform/server/commons/typeorm';
+import {
+    DefaultController,
+    AdminController,
+    AuthController,
+    AuthorityMgrController,
+    RoleController,
+    RoleMgrController,
+    UserController,
+    UserMgrController,
+} from '@platform/server/core/controller';
+import { JwtStrategy, LocalStrategy } from '@platform/server/core/auth';
+import { AuthorityEntity, RoleEntity, UserEntity } from '@platform/server/core/entity';
+import { AuthorityRepository, RoleRepository, UserRepository } from '@platform/server/core/repository';
+import { AuthorityService, AuthService, CoreService, RoleService, UserService } from '@platform/server/core/service';
+
+const entities = [UserEntity, RoleEntity, AuthorityEntity];
+
+const repositories = [UserRepository, RoleRepository, AuthorityRepository];
+
+const controllers = [
+    DefaultController,
+    AdminController,
+    AuthController,
+    AuthorityMgrController,
+    RoleController,
+    RoleMgrController,
+    UserController,
+    UserMgrController,
+];
 
 @Global()
 @Module({
-    imports: [ConfigModule, TypeOrmModule.forFeature([UserEntity])],
-    controllers: [
-        DefaultController,
-        UserController,
-        UserMgrController,
-        RoleController,
-        RoleMgrController,
-        AuthorityMgrController,
+    imports: [
+        ConfigModule,
+        TypeOrmModule.forFeature(entities),
+        TypeOrmExtModule.forCustomRepository(repositories),
+        JwtModule.register({}),
+        PassportModule,
+        LocalStrategy,
+        JwtStrategy,
     ],
-    providers: [CoreService, UserService, RoleService, AuthorityService],
-    exports: [CoreService, UserService, RoleService, AuthorityService],
+    controllers: controllers,
+    providers: [CoreService, UserService, RoleService, AuthorityService, AuthService],
+    exports: [CoreService, UserService, RoleService, AuthorityService, AuthService],
 })
 export default class CoreModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {

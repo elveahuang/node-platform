@@ -61,14 +61,6 @@ export default class Snowflake implements Sequence {
      * @param workerId 工作机器ID(0-31)
      */
     constructor(dataCenterId: number = 1, workerId: number = 1) {
-        console.log(Snowflake.MAX_WORKER_ID);
-        console.log(Snowflake.MAX_DATACENTER_ID);
-        console.log(Snowflake.MAX_SEQUENCE);
-        console.log(Snowflake.WORKER_ID_BITS);
-        console.log(Snowflake.WORKER_ID_SHIFT);
-        console.log(Snowflake.DATACENTER_ID_BITS);
-        console.log(Snowflake.DATACENTER_ID_SHIFT);
-        console.log(Snowflake.TIMESTAMP_LEFT_SHIFT);
         if (dataCenterId > Snowflake.MAX_DATACENTER_ID || dataCenterId < 0) {
             throw new RuntimeException(`datacenterId can't be greater than ${dataCenterId} or less than 0`);
         }
@@ -115,7 +107,6 @@ export default class Snowflake implements Sequence {
      * @return 当前时间戳
      */
     private static currentTimestamp(): bigint {
-        console.log(Date.now());
         return BigInt(Date.now());
     }
 

@@ -8,6 +8,7 @@ import UserService from '@platform/server/core/service/user.service';
 import RoleService from '@platform/server/core/service/role.service';
 import AuthorityService from '@platform/server/core/service/authority.service';
 import { SequenceService } from '@platform/server/commons/sequence/sequence.service';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Global()
 @Module({
@@ -35,6 +36,10 @@ import { SequenceService } from '@platform/server/commons/sequence/sequence.serv
                 synchronize: false,
                 autoLoadEntities: true,
             }),
+        }),
+        ThrottlerModule.forRoot({
+            ttl: 60,
+            limit: 10,
         }),
     ],
     providers: [SequenceService],

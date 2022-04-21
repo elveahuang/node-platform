@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { EntityManager, Repository } from 'typeorm';
+import { Connection, EntityManager, Repository } from 'typeorm';
 import { InjectEntityManager } from '@nestjs/typeorm';
+import { EntityTarget } from 'typeorm/common/EntityTarget';
 
 /**
  * 核心服务
@@ -9,8 +10,10 @@ import { InjectEntityManager } from '@nestjs/typeorm';
 @Injectable()
 export default class CoreService {
     constructor(
-        @InjectEntityManager() private readonly entityManager: EntityManager,
         private readonly configService: ConfigService,
+        private readonly connection: Connection,
+        @InjectEntityManager()
+        private readonly entityManager: EntityManager,
     ) {
         console.log(configService.get<string>('SECRET'));
     }
@@ -18,7 +21,14 @@ export default class CoreService {
     /**
      * 获取仓库类
      */
-    public getRepository<T>(c: { new (): T }): Repository<T> {
-        return this.entityManager.getRepository(c);
+    public getRepository<Entity>(target: EntityTarget<Entity>): Repository<Entity> {
+        return this.entityManager.getRepository(target);
+    }
+
+    /**
+     * 获取仓库类
+     */
+    public withRepository<Entity, R extends Repository<Entity>>(repository: R): R {
+        return this.entityManager.withRepository(repository);
     }
 }

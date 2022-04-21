@@ -12,9 +12,9 @@ import { WebUtils } from '@platform/server/commons/utils/web.utils';
 /**
  * 默认控制器
  */
-@ApiTags('默认控制器')
+@ApiTags('后台管理默认控制器')
 @Controller()
-export default class DefaultController {
+export default class AdminController {
     constructor(
         private readonly coreService: CoreService,
         private readonly userService: UserService,

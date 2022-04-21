@@ -1,6 +1,6 @@
 import { BeforeInsert, PrimaryColumn } from 'typeorm';
 
-export default class IdEntity {
+export default abstract class IdEntity {
     @PrimaryColumn({ type: 'bigint' })
     id: bigint;
 

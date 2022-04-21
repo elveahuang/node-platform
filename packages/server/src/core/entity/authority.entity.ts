@@ -1,23 +1,25 @@
 import { Column, Entity } from 'typeorm';
 import IdEntity from '@platform/server/commons/entity/id-entity';
-import RoleEntity from '@platform/server/core/entity/role.entity';
-import AuthorityEntity from '@platform/server/core/entity/authority.entity';
 
-@Entity('sys_user')
-export default class UserEntity extends IdEntity {
+@Entity('sys_authority')
+export default class AuthorityEntity extends IdEntity {
     /**
-     * 用户名
+     *
      */
-    @Column({ name: 'user_name' })
-    userName: string;
-    /**
-     * 密码
-     */
+    @Column({ type: 'bigint' })
+    parentId: string;
     @Column()
-    password: string;
-    /**
-     * 是否启用
-     */
+    code: string;
+    @Column()
+    title: string;
+    @Column()
+    label: string;
+    @Column({ name: 'description_' })
+    description: string;
+    @Column({ name: 'type_' })
+    type: string;
+    @Column()
+    sortOrder: string;
     @Column({ name: 'active_' })
     active_: string;
     /**
@@ -50,12 +52,4 @@ export default class UserEntity extends IdEntity {
      */
     @Column({ name: 'deleted_at' })
     deletedAt: string;
-    /**
-     * 用户所拥有的角色
-     */
-    roles: RoleEntity[];
-    /**
-     * 用户所拥有的权限
-     */
-    authorities: AuthorityEntity[];
 }
