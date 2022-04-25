@@ -9,7 +9,7 @@
         "serve": "vite preview"
     },
     "dependencies": {
-        "@capacitor/core": "^3.4.3",
+        "@capacitor/core": "^3.5.0",
         "@ionic/vue": "^6.1.2",
         "@ionic/vue-router": "^6.1.2",
         "ionicons": "^6.0.1",
@@ -17,9 +17,9 @@
         "vue": "^3.2.33"
     },
     "devDependencies": {
-        "@capacitor/cli": "^3.4.3",
+        "@capacitor/cli": "^3.5.0",
         "@vitejs/plugin-vue": "^2.3.1",
-        "autoprefixer": "^10.4.4",
+        "autoprefixer": "^10.4.5",
         "sass": "^1.50.1",
         "path": "^0.12.7",
         "postcss": "^8.4.12",

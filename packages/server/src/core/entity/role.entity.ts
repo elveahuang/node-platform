@@ -1,6 +1,9 @@
 import { Column, Entity } from 'typeorm';
 import IdEntity from '@platform/server/commons/entity/id-entity';
 
+/**
+ * 角色实体类
+ */
 @Entity('sys_role')
 export default class RoleEntity extends IdEntity {
     /**

@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { In } from 'typeorm';
+import { I18n, I18nContext } from 'nestjs-i18n';
 import { applicationVersion } from '@platform/commons';
 import CoreService from '@platform/server/core/service/core.service';
 import UserService from '@platform/server/core/service/user.service';
 import UserEntity from '@platform/server/core/entity/user.entity';
 import { SequenceService } from '@platform/server/commons/sequence/sequence.service';
 import { UserRepository } from '@platform/server/core/repository/user.repository';
-import { In } from 'typeorm';
 import { WebUtils } from '@platform/server/commons/utils/web.utils';
 
 /**
@@ -20,6 +21,7 @@ export default class DefaultController {
         private readonly userService: UserService,
         private readonly sequenceService: SequenceService,
         private readonly userRepository: UserRepository,
+        @I18n() private readonly i18n: I18nContext,
     ) {
         this.userRepository.find({}).then();
     }
@@ -28,6 +30,7 @@ export default class DefaultController {
     @ApiOperation({ summary: '获取当前版本号' })
     @ApiResponse({ status: 200, description: '成功' })
     version() {
+        console.log(this.i18n.t('title'));
         this.userRepository
             .findBy({
                 id: In([1]),

@@ -3,12 +3,10 @@ import { Global, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import CoreService from '@platform/server/core/service/core.service';
-import UserService from '@platform/server/core/service/user.service';
-import RoleService from '@platform/server/core/service/role.service';
-import AuthorityService from '@platform/server/core/service/authority.service';
 import { SequenceService } from '@platform/server/commons/sequence/sequence.service';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { I18nModule } from 'nestjs-i18n';
+import { join } from 'path';
 
 @Global()
 @Module({
@@ -37,13 +35,20 @@ import { ThrottlerModule } from '@nestjs/throttler';
                 autoLoadEntities: true,
             }),
         }),
+        I18nModule.forRoot({
+            fallbackLanguage: 'en_US',
+            loaderOptions: {
+                path: join(__dirname, '/i18n/'),
+                watch: true,
+            },
+        }),
         ThrottlerModule.forRoot({
             ttl: 60,
             limit: 10,
         }),
     ],
     providers: [SequenceService],
-    exports: [TypeOrmModule, SequenceService],
+    exports: [TypeOrmModule, JwtModule, I18nModule, SequenceService],
 })
 export default class CommonsModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {

@@ -2,13 +2,15 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { applicationVersion } from '@platform/commons';
 import { MainModule } from '@platform/server/main.module';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
     const app = await NestFactory.create(MainModule);
 
     // 全局前缀
     app.setGlobalPrefix('api');
-
+    // 数据检查
+    app.useGlobalPipes(new ValidationPipe());
     // 接口文档
     const config = new DocumentBuilder()
         .setTitle('接口文档')

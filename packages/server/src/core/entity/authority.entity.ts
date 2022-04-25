@@ -1,27 +1,51 @@
 import { Column, Entity } from 'typeorm';
 import IdEntity from '@platform/server/commons/entity/id-entity';
 
+/**
+ * 权限实体类
+ */
 @Entity('sys_authority')
 export default class AuthorityEntity extends IdEntity {
     /**
      *
      */
-    @Column({ type: 'bigint' })
+    @Column({ type: 'bigint', name: 'parent_id' })
     parentId: string;
+    /**
+     *
+     */
     @Column()
     code: string;
+    /**
+     *
+     */
     @Column()
     title: string;
+    /**
+     *
+     */
     @Column()
     label: string;
+    /**
+     *
+     */
     @Column({ name: 'description_' })
     description: string;
+    /**
+     *
+     */
     @Column({ name: 'type_' })
     type: string;
-    @Column()
+    /**
+     *
+     */
+    @Column({ name: 'sort_order' })
     sortOrder: string;
+    /**
+     *
+     */
     @Column({ name: 'active_' })
-    active_: string;
+    active: string;
     /**
      * 创建人
      */

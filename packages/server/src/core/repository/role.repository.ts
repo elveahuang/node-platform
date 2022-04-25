@@ -4,7 +4,13 @@ import RoleEntity from '@platform/server/core/entity/role.entity';
 
 @CustomRepository(RoleEntity)
 export class RoleRepository extends Repository<RoleEntity> {
-    public async findByUsername(userName: string) {
-        return this.createQueryBuilder('user').where('user.userName = :userName', { userName }).getOne();
+    /**
+     * 根据用户ID查询所有用户所拥有的角色
+     */
+    findByUserId(userId: bigint | number): Promise<RoleEntity[]> {
+        return this.createQueryBuilder('sr')
+            .innerJoin('sys_user_role', 'sru', 'sr.id = sru.role_id')
+            .where('sru.user_id = :userId', { userId: userId })
+            .getMany();
     }
 }
