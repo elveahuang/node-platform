@@ -35,12 +35,21 @@ import { join } from 'path';
                 autoLoadEntities: true,
             }),
         }),
-        I18nModule.forRoot({
-            fallbackLanguage: 'en_US',
-            loaderOptions: {
-                path: join(__dirname, '/i18n/'),
-                watch: true,
-            },
+        I18nModule.forRootAsync({
+            inject: [ConfigService],
+            useFactory: (configService: ConfigService) => ({
+                fallbackLanguage: configService.get<string>('LANG'),
+                fallbacks: {
+                    'en-CA': 'fr',
+                    'en-*': 'en',
+                    'fr-*': 'fr',
+                    pt: 'pt-BR',
+                },
+                loaderOptions: {
+                    path: join(__dirname, '/i18n/'),
+                    watch: true,
+                },
+            }),
         }),
         ThrottlerModule.forRoot({
             ttl: 60,

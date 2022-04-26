@@ -3,7 +3,7 @@ import UserEntity from '@platform/server/core/entity/user.entity';
 import { UserRepository } from '@platform/server/core/repository/user.repository';
 import { AuthorityRepository } from '@platform/server/core/repository/authority.repository';
 import { RoleRepository } from '@platform/server/core/repository/role.repository';
-import { I18n, I18nContext } from 'nestjs-i18n';
+import { I18n, I18nContext, I18nModule, I18nService } from 'nestjs-i18n';
 
 /**
  * 用户服务
@@ -14,7 +14,6 @@ export default class UserService {
         private userRepository: UserRepository,
         private roleRepository: RoleRepository,
         private authorityRepository: AuthorityRepository,
-        @I18n() private i18n: I18nContext,
     ) {}
 
     findAll(): Promise<UserEntity[]> {

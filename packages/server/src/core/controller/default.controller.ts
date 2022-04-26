@@ -1,7 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { In } from 'typeorm';
-import { I18n, I18nContext } from 'nestjs-i18n';
+import { getI18nContextFromRequest, I18n, I18nContext, I18nService } from 'nestjs-i18n';
 import { applicationVersion } from '@platform/commons';
 import CoreService from '@platform/server/core/service/core.service';
 import UserService from '@platform/server/core/service/user.service';
@@ -21,16 +21,13 @@ export default class DefaultController {
         private readonly userService: UserService,
         private readonly sequenceService: SequenceService,
         private readonly userRepository: UserRepository,
-        @I18n() private readonly i18n: I18nContext,
-    ) {
-        this.userRepository.find({}).then();
-    }
+        private readonly i18n: I18nService,
+    ) {}
 
     @Get('initialize')
     @ApiOperation({ summary: '获取当前版本号' })
     @ApiResponse({ status: 200, description: '成功' })
-    version() {
-        console.log(this.i18n.t('title'));
+    version(@Req() request: Request) {
         this.userRepository
             .findBy({
                 id: In([1]),
@@ -60,6 +57,12 @@ export default class DefaultController {
         for (let i = 0; i < 1000; i++) {
             console.log(this.sequenceService.nextId());
         }
+        console.log('i18n...');
+        console.log(this.i18n.t('label.title'));
+        console.log('i18n...');
+        const i = getI18nContextFromRequest(request);
+        console.log(i.t('label.title'));
+
         return WebUtils.success({
             version: applicationVersion,
         });
