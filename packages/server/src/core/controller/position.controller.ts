@@ -1,7 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
-import CoreService from '../service/core.service';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { applicationVersion } from '@platform/commons';
+import { Controller } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('岗位控制器')
 @Controller('position')

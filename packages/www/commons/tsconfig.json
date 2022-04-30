@@ -1,5 +1,5 @@
 {
-    "extends": "../../../tsconfig.base.www.json",
+    "extends": "../../../tsconfig.www.json",
     "compilerOptions": {},
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

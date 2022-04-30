@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 //
 import { TypeOrmExtModule } from '@platform/server/commons/typeorm';
-import { JwtStrategy, LocalStrategy } from '@platform/server/core/auth';
+import { AuthGuard, JwtStrategy, LocalStrategy } from '@platform/server/core/auth';
 import {
     AdminController,
     AuthController,
@@ -49,7 +49,7 @@ import {
     RoleService,
     UserService,
 } from '@platform/server/core/service';
-import { I18nModule } from 'nestjs-i18n';
+import { APP_GUARD } from '@nestjs/core';
 
 const entities = [
     UserEntity,
@@ -108,6 +108,10 @@ const controllers = [
         OrganizationService,
         PositionService,
         EntityRelationService,
+        {
+            provide: APP_GUARD,
+            useClass: AuthGuard,
+        },
     ],
     exports: [
         AuthService,

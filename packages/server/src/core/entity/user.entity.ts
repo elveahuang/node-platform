@@ -14,6 +14,16 @@ export default class UserEntity extends IdEntity {
     @Column({ name: 'user_name' })
     userName: string;
     /**
+     * 用户名
+     */
+    @Column({ name: 'display_name' })
+    displayName: string;
+    /**
+     * 用户名
+     */
+    @Column({ name: 'full_name' })
+    fullName: string;
+    /**
      * 密码
      */
     @Column()

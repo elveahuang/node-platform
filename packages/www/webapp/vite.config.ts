@@ -11,9 +11,11 @@ export default defineConfig({
         tsconfigPaths(),
         AutoImport({
             resolvers: [ElementPlusResolver()],
+            dts: 'src/auto-imports.d.ts',
         }),
         Components({
             resolvers: [ElementPlusResolver()],
+            dts: 'src/components.d.ts',
         }),
     ],
 });

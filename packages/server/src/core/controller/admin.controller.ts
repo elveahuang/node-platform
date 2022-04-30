@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { applicationVersion } from '@platform/commons';
+import { applicationVersion } from '@platform/commons/contants';
 import CoreService from '@platform/server/core/service/core.service';
 import UserService from '@platform/server/core/service/user.service';
 import UserEntity from '@platform/server/core/entity/user.entity';

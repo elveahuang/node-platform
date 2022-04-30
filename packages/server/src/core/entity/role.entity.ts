@@ -9,6 +9,16 @@ export default class RoleEntity extends IdEntity {
     /**
      * 创建人
      */
+    @Column({ name: 'code' })
+    code: string;
+    /**
+     * 创建人
+     */
+    @Column({ name: 'title' })
+    title: string;
+    /**
+     * 创建人
+     */
     @Column({ name: 'created_By', type: 'bigint' })
     createdBy: string;
     /**

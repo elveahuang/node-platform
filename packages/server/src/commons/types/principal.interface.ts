@@ -5,15 +5,15 @@ export interface PrincipalInterface {
     /**
      * 用户ID
      */
-    readonly id: number;
+    readonly id: bigint;
     /**
      * 用户名
      */
-    readonly username: string;
+    readonly userName: string;
     /**
      * 昵称
      */
-    readonly nickname: string;
+    readonly displayName: string;
     /**
      * 用户角色
      */

@@ -1,9 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import UserService from '@platform/server/core/service/user.service';
-import { PrincipalInterface } from '@platform/server/commons/types/principal.interface';
+import { CredentialsDto } from '@platform/server/core/dto';
+import { PrincipalInterface } from '@platform/server/commons/types';
+import { accessTokenType, refreshTokenType } from '@platform/commons/contants';
 import { AuthorityRepository, RoleRepository, UserRepository } from '@platform/server/core/repository';
-import CredentialsDto from '@platform/server/core/dto/credentials.dto';
+import { defaultAccessTokenExpiresIn, defaultRefreshTokenExpiresIn } from '@platform/server/core/auth';
+import { JwtPayload } from '@platform/server/commons/types/jwt.payload';
+import { UserEntity } from '@platform/server/core/entity';
 
 /**
  * 认证授权服务
@@ -12,55 +16,83 @@ import CredentialsDto from '@platform/server/core/dto/credentials.dto';
 export default class AuthService {
     constructor(
         private readonly jwtService: JwtService,
+        private readonly configService: ConfigService,
         private readonly userRepository: UserRepository,
         private readonly roleRepository: RoleRepository,
         private readonly authorityRepository: AuthorityRepository,
-        private readonly userService: UserService,
     ) {}
 
-    async auth(credentialsDto: CredentialsDto) {
+    async auth(credentialsDto: CredentialsDto): Promise<PrincipalInterface> {
         const user = await this.userRepository.findByUsername(credentialsDto.username);
-        if (user) {
-            const roles = await this.roleRepository.findByUserId(user.id);
-            console.log(roles);
-            const authorities = await this.authorityRepository.findByUserId(user.id);
-            console.log(roles);
+        if (!user) {
+            throw new UnauthorizedException();
         }
-        console.log(user);
-        const payload = { username: credentialsDto.username, sub: credentialsDto.username };
+        return this.getAuthExtra(user);
+    }
+
+    async authById(id: bigint): Promise<PrincipalInterface> {
+        const user = await this.userRepository.findOneBy({ id: id });
+        if (!user) {
+            throw new UnauthorizedException();
+        }
+        return this.getAuthExtra(user);
+    }
+
+    async getAuthExtra(user: UserEntity): Promise<PrincipalInterface> {
+        const roles = (await this.roleRepository.findByUserId(user.id)) || [];
+        const authorities = (await this.authorityRepository.findByUserId(user.id)) || [];
         return {
-            access_token: this.jwtService.sign(payload),
-            refresh_token: this.jwtService.sign(payload),
+            id: user.id,
+            userName: user.userName,
+            displayName: user.displayName,
+            roles: roles.map((r) => {
+                return r.code;
+            }),
+            authorities: authorities.map((a) => {
+                return a.code;
+            }),
         };
     }
 
-    async validateUser(username: string, pass: string): Promise<any> {
-        const user = await this.userService.findByUsername(username);
-        if (user && user.password === pass) {
-            const { password, ...result } = user;
-            return result;
-        }
-        return null;
+    createAccessToken(principal: PrincipalInterface): string {
+        const expiresIn = this.configService.get('JWT_ACCESS_TOKEN_EXPIRATION_TIME', defaultAccessTokenExpiresIn);
+        const payload: JwtPayload = {
+            id: principal.id,
+            userName: principal.userName,
+            sub: principal.userName,
+            type: accessTokenType,
+        };
+        return this.jwtService.sign(payload, {
+            expiresIn: expiresIn * 60 * 100,
+        });
     }
 
-    async login(user: any) {
-        const payload = { username: user.username, sub: user.userId };
-        return {
-            access_token: this.jwtService.sign(payload),
-        };
+    createRefreshToken(principal: PrincipalInterface): string {
+        const expiresIn = this.configService.get('JWT_REFRESH_TOKEN_EXPIRATION_TIME', defaultRefreshTokenExpiresIn);
+        return this.jwtService.sign(
+            {
+                id: principal.id,
+                userName: principal.userName,
+                sub: principal.userName,
+                type: refreshTokenType,
+            },
+            {
+                expiresIn: expiresIn * 60 * 100,
+            },
+        );
     }
 
     /**
      * 检测用户权限
      */
-    async hasAnyRoles(principal: PrincipalInterface, roles: any): Promise<boolean> {
-        return !!(principal && principal.roles);
+    hasAnyRoles(principal: PrincipalInterface, roles: any): boolean {
+        return roles.some((role) => principal?.roles?.includes(role));
     }
 
     /**
      * 检测用户权限
      */
-    async hasAnyAuthorities(principal: PrincipalInterface, authorities: any): Promise<boolean> {
-        return !!(principal && principal.authorities);
+    hasAnyAuthorities(principal: PrincipalInterface, authorities: any): boolean {
+        return authorities.some((authority) => principal?.authorities?.includes(authority));
     }
 }

@@ -1,12 +1,12 @@
 import { Global, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-//
-import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { SequenceService } from '@platform/server/commons/sequence/sequence.service';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { I18nModule } from 'nestjs-i18n';
 import { join } from 'path';
+import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+//
+import { SequenceService } from '@platform/server/commons/sequence';
 
 @Global()
 @Module({
@@ -17,7 +17,7 @@ import { join } from 'path';
         JwtModule.registerAsync({
             imports: [ConfigModule],
             useFactory: async (configService: ConfigService) => ({
-                secret: configService.get<string>('SECRET'),
+                secret: configService.get<string>('JWT_SECRET'),
             }),
             inject: [ConfigService],
         }),

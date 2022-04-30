@@ -1,27 +1,27 @@
 {
-    "name": "node-platform-root",
+    "name": "node-platform",
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "lint": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}'",
-        "lint:fix": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}' --fix",
-        "prettier": "prettier --write './**/*.{ts,tsx,js,jsx,json,scss,css,vue}'",
         "start:server": "cd packages/server && pnpm run start",
         "start:server:prod": "cd ./packages/server && node dist/main",
         "build:server": "cd ./packages/server && pnpm run build",
+        "start:webapp": "cd packages/www/webapp && pnpm run start",
+        "build:webapp": "cd packages/www/webapp && pnpm run build",
         "start:mobile": "cd packages/www/mobile && pnpm run start",
         "build:mobile": "cd packages/www/mobile && pnpm run build",
         "start:mp": "cd packages/www/mp && pnpm run start",
         "build:mp": "cd packages/www/mp && pnpm run build",
-        "start:webapp": "cd packages/www/webapp && pnpm run start",
-        "build:webapp": "cd packages/www/webapp && pnpm run build"
+        "lint": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}'",
+        "lint:fix": "eslint './packages/**/src/**/*.{ts,tsx,js,jsx,vue}' --fix",
+        "prettier": "prettier --write './**/*.{ts,tsx,js,jsx,json,scss,css,vue}'"
     },
     "workspaces": [
         "packages/**"
     ],
     "dependencies": {
-        "axios": "^0.27.1",
-        "core-js": "^3.22.2",
+        "axios": "^0.27.2",
+        "core-js": "^3.22.3",
         "crypto-js": "^4.1.1",
         "date-fns": "^2.28.0",
         "dayjs": "^1.11.1",
@@ -33,14 +33,14 @@
         "validator": "^13.7.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.17.9",
+        "@babel/core": "^7.17.10",
         "@babel/eslint-parser": "^7.17.0",
-        "@babel/preset-env": "^7.16.11",
+        "@babel/preset-env": "^7.17.10",
         "@babel/preset-typescript": "^7.16.7",
         "@types/crypto-js": "^4.1.1",
         "@types/jsonwebtoken": "^8.5.8",
         "@types/lodash": "^4.14.182",
-        "@types/node": "^17.0.27",
+        "@types/node": "^17.0.30",
         "@types/qs": "^6.9.7",
         "@types/validator": "^13.7.2",
         "@typescript-eslint/eslint-plugin": "^5.21.0",
@@ -53,9 +53,9 @@
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-vue": "^8.7.1",
         "husky": "^7.0.4",
-        "lint-staged": "^12.4.0",
+        "lint-staged": "^12.4.1",
         "path": "^0.12.7",
         "prettier": "^2.6.2",
-        "typescript": "^4.6.3"
+        "typescript": "^4.6.4"
     }
 }

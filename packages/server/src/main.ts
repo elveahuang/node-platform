@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { applicationVersion } from '@platform/commons';
+import { applicationVersion } from '@platform/commons/contants';
 import { MainModule } from '@platform/server/main.module';
 import { ValidationPipe } from '@nestjs/common';
 
