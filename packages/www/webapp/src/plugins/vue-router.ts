@@ -1,11 +1,13 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'home',
-        description: 'home',
         component: () => import('@/views/Home.vue'),
+        meta: {
+            description: 'Home',
+        },
     },
 ];
 

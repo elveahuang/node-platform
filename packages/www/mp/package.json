@@ -22,14 +22,14 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.17.9",
-        "@tarojs/runtime": "^3.4.8",
-        "@tarojs/taro": "^3.4.8",
-        "@tarojs/components": "^3.4.8"
+        "@tarojs/runtime": "^3.4.9",
+        "@tarojs/taro": "^3.4.9",
+        "@tarojs/components": "^3.4.9"
     },
     "devDependencies": {
         "@types/webpack-env": "^1.16.4",
-        "@tarojs/mini-runner": "^3.4.8",
-        "@tarojs/webpack-runner": "^3.4.8"
+        "@tarojs/mini-runner": "^3.4.9",
+        "@tarojs/webpack-runner": "^3.4.9"
     },
     "eslintConfig": {
         "extends": [
